@@ -1,22 +1,15 @@
 package com.doughdev.healthapi.controllers;
 
-import org.junit.jupiter.api.Assertions;
+import com.doughdev.healthapi.services.BpService;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BloodPressureControllerTests {
 
+    BpService bpService = new BpService();
+
     @Test
-    void returns_list_of_bp_metrics() {
-        BloodPressureController controller = new BloodPressureController();
+    void returns_bp_metrics() {
+        BloodPressureController controller = new BloodPressureController(this.bpService);
 
-        List<String> result = controller.getMetrics();
-
-        List<String> expected = new ArrayList<>();
-        expected.add("Some sort of BP metric");
-
-        Assertions.assertEquals(result, expected);
     }
 }
